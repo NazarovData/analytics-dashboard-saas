@@ -1,0 +1,7 @@
+date,product,quantity,price,total
+2026-02-01,Product A,2,100,200
+2026-02-01,Product A,2,100,200
+2026-02-02,Product B,3,50,150
+2026-02-03,Product C,-1,200,200
+2026-02-04,Product D,5,0,0
+2026-02-05,Product E,10,100,1000

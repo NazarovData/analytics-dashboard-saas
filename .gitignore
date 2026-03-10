@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+*.db
+*.sqlite
+
+# Node
+node_modules/
+.npm
+.pnpm-store/
+dist/
+.cache/
+
+# Environment
+.env
+.env.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Documentation files with API keys (exclude from git)
+*CLAUDE*.md
+*ФИНАЛЬНАЯ*.md
+*ТЕСТ*.md
+*СЕССИЯ*.md
+*ИНСТРУКЦИЯ*.md
+*ИНТЕГРАЦИЯ*.md
+*РЕВОЛЮЦИЯ*.md
+*ПОЛУЧИТЬ*.md
+*ИСПРАВЛЕНИЕ*.md
+*РАБОТАЕТ*.md
+*НАЧНИТЕ*.md
+*ГОТОВ*.md
+*УСТАНОВКА*.md
+*ВИЗУАЛИЗАЦИЯ*.md
+*ШПАРГАЛКА*.md
+*ПОЛНАЯ*.md
+*ИТОГОВАЯ*.md
+*АНАЛИТИКА*.md
+
+# Keep only essential docs
+!README.md
+!CHANGELOG.md 

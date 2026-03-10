@@ -1,0 +1,106 @@
+🎯 ЧТО ДЕЛАТЬ ДАЛЬШЕ - ПОШАГОВАЯ ИНСТРУКЦИЯ
+============================================
+
+✅ ШАГ 1: Проверьте установку
+-------------------------------
+В CMD выполните:
+python ПРОВЕРКА_УСТАНОВКИ.py
+
+Должно вывести "✅ ВСЁ УСТАНОВЛЕНО ПРАВИЛЬНО!"
+
+
+✅ ШАГ 2: Проверьте импорты вручную
+------------------------------------
+В CMD (с активированным venv) выполните:
+
+python -c "import pyotp; import qrcode; from PIL import Image; print('✅ 2FA зависимости OK')"
+python -c "from app.api.v1 import auth_2fa; print('✅ 2FA API OK')"
+python -c "from app.api.v1 import geo_analytics; print('✅ Geo API OK')"
+
+Если все выводят "✅" - переходите к шагу 3.
+
+
+✅ ШАГ 3: Запустите Backend сервер
+-----------------------------------
+В CMD выполните:
+
+cd "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS"
+venv\Scripts\activate.bat
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+Должно появиться:
+INFO: Uvicorn running on http://0.0.0.0:8000
+
+
+✅ ШАГ 4: Проверьте API в браузере
+-----------------------------------
+Откройте в браузере:
+
+1. http://localhost:8000/docs - Swagger документация
+2. http://localhost:8000/api/v1/geo/analytics - Геоаналитика
+3. http://localhost:8000/api/v1/alerts/ - Алерты
+
+Должны открыться без ошибок!
+
+
+✅ ШАГ 5: Проверьте 2FA API
+----------------------------
+В Swagger (http://localhost:8000/docs) найдите раздел "2fa":
+
+1. POST /api/v1/2fa/setup - настройка 2FA
+2. POST /api/v1/2fa/verify - верификация кода
+3. GET /api/v1/2fa/status - статус 2FA
+
+Попробуйте выполнить запрос через Swagger!
+
+
+✅ ШАГ 6: Запустите Frontend
+-----------------------------
+В НОВОМ окне CMD выполните:
+
+cd "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS\frontend"
+npm run dev
+
+Откроется на http://localhost:3000
+
+
+✅ ШАГ 7: Протестируйте функции
+--------------------------------
+1. 🔔 Алерты - проверьте в хедере дашборда
+2. 📊 Сравнение периодов - на главной странице
+3. 🏷️ White Label - /white-label
+4. 🇹🇯 Таджикский язык - переключатель в хедере
+5. 📍 Геоаналитика - через API
+6. 🔐 2FA - через API или Swagger
+
+
+✅ ШАГ 8: Если всё работает
+----------------------------
+🎉 Поздравляю! Все функции реализованы и работают!
+
+
+❌ ЕСЛИ ОШИБКИ:
+---------------
+1. Проверьте, что venv активирован ((venv) в начале строки)
+2. Проверьте, что все зависимости установлены
+3. Посмотрите логи в консоли
+4. Проверьте, что порты 8000 и 3000 свободны
+
+
+📋 БЫСТРАЯ ПРОВЕРКА (одной командой):
+-------------------------------------
+python -c "import pyotp, qrcode; from PIL import Image; from app.api.v1 import auth_2fa, geo_analytics; print('✅ ВСЁ РАБОТАЕТ!')"
+
+Если выводит "✅ ВСЁ РАБОТАЕТ!" - можете запускать сервер!
+
+
+🚀 ГОТОВЫЕ КОМАНДЫ ДЛЯ ЗАПУСКА:
+-------------------------------
+Backend:
+cd "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS" && venv\Scripts\activate.bat && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+Frontend:
+cd "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS\frontend" && npm run dev
+
+============================================
+

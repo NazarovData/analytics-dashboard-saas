@@ -1,0 +1,20 @@
+order_id,date,client_id,product,category,quantity,price,cost,profit,payment_status,shipping_cost,region,source
+ORD-2024-00001,2024-01-15,CL001,iPhone 15 Pro,Electronics,1,125000,95000,30000,paid,500,Москва,Organic
+ORD-2024-00001,2024-01-15,CL001,AirPods Pro,Electronics,2,25000,18000,7000,paid,0,Москва,Organic
+ORD-2024-00002,2024-01-15,CL002,MacBook Air M3,Electronics,1,145000,110000,35000,paid,1000,СПб,Ads
+ORD-2024-00003,2024-01-16,CL003,Samsung Galaxy S24,Electronics,1,89000,65000,24000,paid,500,Казань,Referral
+ORD-2024-00003,2024-01-16,CL003,Galaxy Buds,Electronics,1,15000,10000,5000,paid,0,Казань,Referral
+ORD-2024-00004,2024-01-16,CL001,USB-C Hub,Accessories,2,3500,2000,1500,paid,300,Москва,Organic
+ORD-2024-00005,2024-01-17,CL004,iPad Pro 12.9,Electronics,1,110000,85000,25000,paid,800,Новосибирск,Ads
+ORD-2024-00006,2024-01-17,CL005,Logitech MX Master,Accessories,1,9500,6500,3000,paid,400,Екатеринбург,Organic
+ORD-2024-00007,2024-01-18,CL002,Apple Watch Ultra,Electronics,1,75000,55000,20000,paid,500,СПб,Ads
+ORD-2024-00008,2024-01-18,CL006,Sony WH-1000XM5,Audio,1,35000,25000,10000,paid,400,Ростов,Direct
+ORD-2024-00009,2024-01-19,CL007,Dell XPS 15,Electronics,1,165000,125000,40000,paid,1200,Москва,Ads
+ORD-2024-00010,2024-01-19,CL003,Keyboard Keychron,Accessories,1,12000,8000,4000,paid,350,Казань,Organic
+ORD-2024-00011,2024-01-20,CL008,Nintendo Switch,Gaming,1,35000,27000,8000,cancelled,0,Краснодар,Direct
+ORD-2024-00012,2024-01-20,CL009,PS5,Gaming,1,55000,45000,10000,paid,800,Москва,Ads
+ORD-2024-00013,2024-01-21,CL010,iPhone 15,Electronics,1,95000,72000,23000,paid,500,СПб,Referral
+
+
+
+

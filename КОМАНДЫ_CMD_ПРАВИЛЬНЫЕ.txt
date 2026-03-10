@@ -1,0 +1,107 @@
+========================================
+  ПРАВИЛЬНЫЕ КОМАНДЫ ДЛЯ CMD
+  (выполняйте по одной строке)
+========================================
+
+ВАЖНО: Выполняйте команды ПО ОДНОЙ, нажимая Enter после каждой!
+
+
+════════════════════════════════════════
+ВАРИАНТ 1: Только фронтенд
+════════════════════════════════════════
+
+cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS"
+cd frontend
+start /b cmd /c "timeout /t 5 /nobreak >nul && start msedge http://localhost:3000"
+npm run dev
+
+
+════════════════════════════════════════
+ВАРИАНТ 2: Только бэкенд
+════════════════════════════════════════
+
+cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS"
+venv\Scripts\activate
+start /b cmd /c "timeout /t 8 /nobreak >nul && start msedge http://localhost:8000/docs"
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+
+════════════════════════════════════════
+ВАРИАНТ 3: Оба вместе (в разных окнах)
+════════════════════════════════════════
+
+Шаг 1 - Перейдите в папку проекта:
+cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS"
+
+Шаг 2 - Запустите бэкенд в новом окне:
+start "Backend" cmd /k "cd /d C:\Users\jobir\OneDrive\Desktop\Дашборд^ SaaS && venv\Scripts\activate && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
+
+Шаг 3 - Подождите 5 секунд, затем запустите фронтенд:
+timeout /t 5 /nobreak
+
+Шаг 4 - Запустите фронтенд в новом окне:
+start "Frontend" cmd /k "cd /d C:\Users\jobir\OneDrive\Desktop\Дашборд^ SaaS\frontend && npm run dev"
+
+Шаг 5 - Подождите 10 секунд:
+timeout /t 10 /nobreak
+
+Шаг 6 - Откройте браузеры:
+start msedge http://localhost:3000
+timeout /t 2 /nobreak
+start msedge http://localhost:8000/docs
+
+
+════════════════════════════════════════
+САМЫЙ ПРОСТОЙ СПОСОБ:
+════════════════════════════════════════
+
+Просто запустите файл: запуск_оба_через_cmd.bat
+
+Или выполните одну команду:
+cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS" && запуск_оба_через_cmd.bat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

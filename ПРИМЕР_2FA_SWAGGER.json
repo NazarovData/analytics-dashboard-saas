@@ -1,0 +1,60 @@
+{
+  "Пример 1: Настройка 2FA (Google Authenticator)": {
+    "endpoint": "POST /2fa/setup",
+    "user_id": "test_user",
+    "request_body": {
+      "method": "totp",
+      "email": "test@example.com"
+    },
+    "response": {
+      "success": true,
+      "message": "2FA настроен. Отсканируйте QR код в Google Authenticator",
+      "qr_code": "data:image/png;base64,iVBORw0KG...",
+      "secret": "ABCDEFGHIJKLMNOP",
+      "backup_codes": [
+        "A1B2C3D4",
+        "E5F6G7H8",
+        "..."
+      ]
+    }
+  },
+  "Пример 2: Верификация кода": {
+    "endpoint": "POST /2fa/verify",
+    "user_id": "test_user",
+    "request_body": {
+      "code": "123456"
+    },
+    "response": {
+      "success": true,
+      "message": "Код верифицирован",
+      "token": "eyJhbGc..."
+    }
+  },
+  "Пример 3: Настройка SMS": {
+    "endpoint": "POST /2fa/setup",
+    "user_id": "test_user",
+    "request_body": {
+      "method": "sms",
+      "phone": "+79991234567"
+    }
+  },
+  "Пример 4: Настройка Email": {
+    "endpoint": "POST /2fa/setup",
+    "user_id": "test_user",
+    "request_body": {
+      "method": "email",
+      "email": "user@example.com"
+    }
+  },
+  "Пример 5: Проверка статуса": {
+    "endpoint": "GET /2fa/status",
+    "user_id": "test_user",
+    "response": {
+      "enabled": true,
+      "method": "totp",
+      "setup_required": false,
+      "has_backup_codes": true
+    }
+  }
+}
+

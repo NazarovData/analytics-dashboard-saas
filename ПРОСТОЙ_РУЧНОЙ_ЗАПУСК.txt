@@ -1,0 +1,57 @@
+╔══════════════════════════════════════════════════╗
+║   САМЫЙ ПРОСТОЙ РУЧНОЙ СПОСОБ                   ║
+╚══════════════════════════════════════════════════╝
+
+Это ГАРАНТИРОВАННО работает!
+
+ОКНО 1 (BACKEND):
+-----------------
+1. Откройте cmd (Win+R, введите cmd, Enter)
+2. Выполните:
+   cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS"
+   venv\Scripts\activate.bat
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+3. Дождитесь сообщения: "Uvicorn running on..."
+
+
+ОКНО 2 (FRONTEND):
+------------------
+1. Откройте ВТОРОЕ окно cmd
+2. Выполните:
+   cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS\frontend"
+   npm run dev
+
+3. Дождитесь сообщения: "Local: http://localhost:3000"
+
+
+ОКНО 3 (БРАУЗЕР):
+-----------------
+1. Откройте Edge
+2. Введите: http://localhost:3000
+3. Нажмите Enter
+
+ГОТОВО!
+
+
+КОПИРОВАТЬ В CMD (BACKEND):
+---------------------------
+cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS"
+venv\Scripts\activate.bat
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+
+КОПИРОВАТЬ В CMD (FRONTEND):
+----------------------------
+cd /d "C:\Users\jobir\OneDrive\Desktop\Дашборд SaaS\frontend"
+npm run dev
+
+
+Это 100% работает, потому что вы все делаете вручную!
+
+
+
+
+
+
+

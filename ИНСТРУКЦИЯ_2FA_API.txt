@@ -1,0 +1,181 @@
+🔐 ИНСТРУКЦИЯ ПО ИСПОЛЬЗОВАНИЮ 2FA API
+=====================================
+
+📋 ПОШАГОВАЯ ИНСТРУКЦИЯ:
+=======================
+
+ШАГ 1: ПРОВЕРЬТЕ СТАТУС 2FA
+---------------------------
+GET /2fa/status
+
+В Swagger:
+1. Найдите "GET /2fa/status"
+2. Нажмите "Try it out"
+3. В поле "user_id" введите: test_user
+4. Нажмите "Execute"
+
+Результат: {"enabled": false, "setup_required": true}
+
+
+ШАГ 2: НАСТРОЙТЕ 2FA (GOOGLE AUTHENTICATOR)
+-------------------------------------------
+POST /2fa/setup
+
+В Swagger:
+1. Найдите "POST /2fa/setup"
+2. Нажмите "Try it out"
+3. В поле "user_id" введите: test_user
+4. В поле "Request body" введите:
+
+{
+  "method": "totp",
+  "email": "test@example.com"
+}
+
+5. Нажмите "Execute"
+
+✅ Результат:
+- "qr_code": "data:image/png;base64,..." (QR код для сканирования)
+- "secret": "ABCDEFGH..." (секретный ключ)
+- "backup_codes": ["CODE1", "CODE2", ...] (10 backup кодов)
+
+
+ШАГ 3: ОТСКАНИРУЙТЕ QR КОД
+---------------------------
+1. Скопируйте значение "qr_code" из ответа
+2. Откройте в браузере (это base64 изображение)
+   ИЛИ
+3. Используйте Google Authenticator:
+   - Откройте приложение
+   - Нажмите "+"
+   - Выберите "Сканировать QR код"
+   - Используйте скопированный qr_code
+
+
+ШАГ 4: ПОЛУЧИТЕ КОД ИЗ GOOGLE AUTHENTICATOR
+--------------------------------------------
+1. Откройте Google Authenticator
+2. Найдите "Analitix AI" или "test@example.com"
+3. Скопируйте 6-значный код (например: 123456)
+
+
+ШАГ 5: ВЕРИФИЦИРУЙТЕ КОД
+-------------------------
+POST /2fa/verify
+
+В Swagger:
+1. Найдите "POST /2fa/verify"
+2. Нажмите "Try it out"
+3. В поле "user_id" введите: test_user
+4. В поле "Request body" введите:
+
+{
+  "code": "123456"
+}
+
+(замените 123456 на код из Google Authenticator)
+
+5. Нажмите "Execute"
+
+✅ Результат: {"success": true, "token": "..."}
+
+
+📋 АЛЬТЕРНАТИВНЫЕ МЕТОДЫ:
+=======================
+
+МЕТОД SMS:
+----------
+POST /2fa/setup
+
+{
+  "method": "sms",
+  "phone": "+79991234567"
+}
+
+Затем: POST /2fa/send-code?user_id=test_user
+Получите код на телефон: POST /2fa/verify
+
+
+МЕТОД EMAIL:
+------------
+POST /2fa/setup
+
+{
+  "method": "email",
+  "email": "test@example.com"
+}
+
+Затем: POST /2fa/send-code?user_id=test_user
+Получите код на email: POST /2fa/verify
+
+
+📋 ДРУГИЕ ENDPOINTS:
+===================
+
+GET /2fa/status?user_id=test_user
+- Проверка статуса 2FA
+
+POST /2fa/send-code?user_id=test_user
+- Отправить код (для SMS/Email методов)
+
+POST /2fa/regenerate-backup-codes?user_id=test_user
+- Регенерировать backup коды
+
+DELETE /2fa/disable?user_id=test_user
+- Отключить 2FA
+
+
+⚠️ ВАЖНО:
+=========
+
+1. ВСЕГДА вводите user_id в параметрах!
+   - В Swagger есть поле "user_id"
+   - Введите: test_user (или любой другой ID)
+
+2. Для POST запросов:
+   - Нажмите "Try it out"
+   - Введите user_id в поле запроса
+   - Введите данные в "Request body"
+   - Нажмите "Execute"
+
+3. Backup коды сохраните!
+   - Они нужны, если потеряете доступ к Google Authenticator
+   - Храните в безопасном месте
+
+
+🔍 ПРИМЕРЫ В SWAGGER:
+====================
+
+1. Проверка статуса:
+   GET /2fa/status
+   user_id: test_user
+   → Execute
+
+2. Настройка TOTP:
+   POST /2fa/setup
+   user_id: test_user
+   Body: {"method": "totp", "email": "test@example.com"}
+   → Execute
+
+3. Верификация:
+   POST /2fa/verify
+   user_id: test_user
+   Body: {"code": "123456"}
+   → Execute
+
+
+✅ ЕСЛИ ВСЁ РАБОТАЕТ:
+====================
+🎉 Поздравляю! 2FA настроен и работает!
+
+
+❌ ЕСЛИ ОШИБКИ:
+===============
+1. Убедитесь, что вводите user_id
+2. Проверьте формат JSON в Request body
+3. Для TOTP: убедитесь, что код из Google Authenticator актуален (обновляется каждые 30 сек)
+4. Посмотрите логи в консоли backend
+
+
+============================================
+

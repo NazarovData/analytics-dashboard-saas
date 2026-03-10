@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открыть Серверы</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 25px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.7);
+        }
+        .button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.5);
+        }
+        .button.secondary:hover {
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.7);
+        }
+        .links {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        .links code {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            display: block;
+            margin: 10px 0;
+            color: #333;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 10px;
+            color: #856404;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 BizPulse PRO</h1>
+        <p class="subtitle">Нажмите на кнопку чтобы открыть</p>
+        
+        <a href="http://localhost:3000" class="button" target="_blank">
+            📊 Открыть Фронтенд
+        </a>
+        
+        <a href="http://localhost:8000/docs" class="button secondary" target="_blank">
+            🔧 Открыть API Документацию
+        </a>
+        
+        <div class="status">
+            ⚠️ Убедитесь что серверы запущены!<br>
+            (Должны быть открыты окна "Backend" и "Frontend")
+        </div>
+        
+        <div class="links">
+            <p><strong>Или скопируйте ссылки:</strong></p>
+            <code>http://localhost:3000</code>
+            <code>http://localhost:8000/docs</code>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
