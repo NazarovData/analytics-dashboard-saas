@@ -91,4 +91,37 @@ const DataQualityDashboard: React.FC<DataQualityDashboardProps> = ({
               Обнаружено аномалий
             </div>
             {totalAnomalies > 0 && (
-       
+              <p className="text-xs text-orange-600 mt-2">
+                Рекомендуется проверить строки с аномалиями
+              </p>
+            )}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Рекомендации */}
+      {recommendations.length > 0 && (
+        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Рекомендации</h3>
+          <ul className="list-disc list-inside space-y-1 text-gray-600 text-sm">
+            {recommendations.map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Таблица аномалий */}
+      {anomalies.length > 0 && (
+        <AnomalyTable
+          anomalies={anomalies}
+          totalAnomalies={totalAnomalies}
+          byMethod={anomaliesByMethod}
+          bySeverity={anomaliesBySeverity}
+        />
+      )}
+    </div>
+  );
+};
+
+export default DataQualityDashboard;

@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  TrendingUp, TrendingDown, Minus, Calendar, 
-  DollarSign, ShoppingCart, Users, CreditCard,
-  Repeat, Heart, UserX, ArrowUpRight, ArrowDownRight
-} from 'lucide-react';
+import React from 'react';
 
-interface PeriodData {
-  revenue: number;
-  orders: number;
-  customers: number;
-  avgCheck: number;
-  repeatRate: number;
-  ltv: number;
-  churnRate: number;
-}
+/**
+ * Заглушка: файл был обрезан и ломал tsc при сборке.
+ * При необходимости сравнения периодов — дополнить реализацией.
+ */
+const PeriodComparisonDashboard: React.FC = () => {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/5 p-6 text-center text-gray-400">
+      Сравнение периодов временно недоступно
+    </div>
+  );
+};
 
-interface ComparisonMetric {
-  name: string;
-  icon: React.ReactNode;
-  current: number;
-  previous: number;
-  change: number;
-  changePercent: number;
-  format: 'currency' | 'number' | 'percent';
-  isPositive: boolean;
-}
-
-const PeriodComparisonDashboard: React.FC = 
+export default PeriodComparisonDashboard;
