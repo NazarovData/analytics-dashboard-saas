@@ -34,7 +34,13 @@ export function useIndustryUpload(industry: string): UseIndustryUploadReturn {
       const formData = new FormData()
       formData.append('file', file)
 
-      const response = await fetch('http://localhost:8000/api/v1/files/upload', {
+      const API_URL =
+        (import.meta as any).env?.VITE_API_URL ||
+        ((import.meta as any).env?.PROD
+          ? '/api/v1'
+          : 'http://localhost:8000/api/v1')
+
+      const response = await fetch(`${API_URL}/files/upload`, {
         method: 'POST',
         body: formData,
       })
@@ -58,7 +64,12 @@ export function useIndustryUpload(industry: string): UseIndustryUploadReturn {
       return result
     } catch (error: any) {
       console.error(`[${industry}] Ошибка AI-анализа:`, error)
-      toast.error(error.message || 'Ошибка AI-анализа')
+      const msg = error?.message || ''
+      if (msg === 'Failed to fetch' || msg.includes('NetworkError')) {
+        toast.error('API недоступен. Проверьте VITE_API_URL в Vercel.', { duration: 5000 })
+      } else {
+        toast.error(msg || 'Ошибка AI-анализа')
+      }
       return null
     } finally {
       setIsUploading(false)

@@ -639,7 +639,13 @@ export function DashboardPageNew() {
       const formData = new FormData()
       formData.append('file', file)
 
-      const response = await fetch('http://localhost:8000/api/v1/files/upload', {
+      const API_URL =
+        (import.meta as any).env?.VITE_API_URL ||
+        ((import.meta as any).env?.PROD
+          ? '/api/v1'
+          : 'http://localhost:8000/api/v1')
+
+      const response = await fetch(`${API_URL}/files/upload`, {
         method: 'POST',
         body: formData,
       })
@@ -666,7 +672,15 @@ export function DashboardPageNew() {
         { duration: 4000 }
       )
     } catch (error: any) {
-      toast.error(error.message || 'Ошибка загрузки файла')
+      const msg = error?.message || ''
+      if (msg === 'Failed to fetch' || msg.includes('NetworkError')) {
+        toast.error(
+          'Сервер анализа недоступен. Укажите VITE_API_URL на Render в Vercel или запустите API локально.',
+          { duration: 6000 }
+        )
+      } else {
+        toast.error(msg || 'Ошибка загрузки файла')
+      }
     } finally {
       setIsUploading(false)
     }

@@ -10,11 +10,13 @@ import type {
   AnalyticsMetrics,
 } from '@/types'
 
-// Для production используйте относительный путь /api/v1
-// Vercel будет проксировать запросы к Railway backend
-const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || (
-  (import.meta as any).env?.PROD ? '/api/v1' : 'http://localhost:8000/api/v1'
-)
+// Production: задайте VITE_API_URL = https://your-backend.onrender.com/api/v1
+// Иначе в PROD fetch на localhost даст "Failed to fetch"
+export const API_BASE_URL =
+  (import.meta as any).env?.VITE_API_URL ||
+  ((import.meta as any).env?.PROD
+    ? '/api/v1'
+    : 'http://localhost:8000/api/v1')
 
 // Create axios instance
 export const api = axios.create({
