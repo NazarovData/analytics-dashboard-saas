@@ -23,7 +23,7 @@ import { createAnalyticsReport, exportToCSV } from '@/utils/pdfExport'
 import { AITrustScore, ConfidenceBadge } from '@/components/AITrustScore'
 import { AlertsNotification } from '@/components/AlertsNotification'
 import { PeriodComparison } from '@/components/PeriodComparison'
-import { LanguageSwitcher, useLanguage } from '@/context/LanguageContext'
+// Language switcher removed
 import { useAnalyticsStore } from '@/store/analyticsStore'
 import { getPalette, TOOLTIP_STYLE, GRID_PROPS, axisProps } from '@/lib/palettes'
 
@@ -528,13 +528,11 @@ const OnboardingSteps = ({ currentStep }: { currentStep: number }) => {
 export function DashboardPageNew() {
   const navigate = useNavigate()
   const { user, logout } = useAuthStore()
-  const { t } = useLanguage() // Добавляем хук для переводов
-  
   const [greeting] = useState(() => {
     const hour = new Date().getHours()
-    if (hour < 12) return t('greeting.morning') || 'Доброе утро'
-    if (hour < 18) return t('greeting.afternoon') || 'Добрый день'
-    return t('greeting.evening') || 'Добрый вечер'
+    if (hour < 12) return 'Доброе утро'
+    if (hour < 18) return 'Добрый день'
+    return 'Добрый вечер'
   })
   
   const [isUploading, setIsUploading] = useState(false)
@@ -728,10 +726,6 @@ export function DashboardPageNew() {
 
             {/* Actions */}
             <div className="flex items-center gap-2">
-              {/* Переключатель языка - ЗДЕСЬ! 🌍 */}
-              <div className="hidden sm:block">
-                <LanguageSwitcher />
-              </div>
 
               {data && (
                 <Button
@@ -773,10 +767,6 @@ export function DashboardPageNew() {
                 <LogOut className="h-4 w-4" />
               </Button>
               
-              {/* Переключатель языка для мобильных - в конце */}
-              <div className="sm:hidden">
-                <LanguageSwitcher />
-              </div>
             </div>
           </div>
         </div>
